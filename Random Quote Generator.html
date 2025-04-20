@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://127.0.0.1:5500/c%20basic/project/akshitproject.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Random Quote Generator</title>
+  <style>
+  body {
+    background-image: url(https://wallpaperaccess.com/full/310406.jpg);
+    background-size: cover;
+    background-attachment:fixed;
+    background-position:centers;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 0;
+  }
+  
+  #container {
+
+    height: 200px;
+    width: 400px;
+    padding: 40px;
+    margin-top: 600px;
+    align-items: center;
+    text-align: center;
+    background: white;
+    border-style: double;
+    border-radius: 3%;
+    opacity: 0.7;
+    
+  }
+  
+  #quote-box {
+    margin-top: 20px;
+    border: 8px,4px,8px,4px;
+  }
+  
+  #quote {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #434190;
+  }
+  </style>
+  
+</head>
+<body>
+
+  <div id="container">
+    <h1>Random Quote Generator</h1>
+    <div id="quote-box">
+      <p id="quote">Success is not final, failure is not fatal: It is the courage to continue that counts.</p>
+      <button onclick="generateQuote()">Get New Quote</button>
+    </div>
+  </div>
+
+  <script>
+  const quotes = [
+  {
+    quote: "To live is the rarest thing in the world. Most people exist, that is all.",
+    author: "Oscar Wilde"
+  },
+  {
+    quote: "In the middle of every difficulty lies opportunity.",
+    author: "Albert Einstein"
+  },
+  {
+    quote: "Life is what happens when you're busy making other plans.",
+    author: "John Lennon"
+  },
+  {
+    quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    author: "Winston Churchill"
+  }
+];
+
+function generateQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quote").innerText = quotes[randomIndex].quote;
+  document.getElementById("author").innerText = `- ${quotes[randomIndex].author}`;
+}
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
